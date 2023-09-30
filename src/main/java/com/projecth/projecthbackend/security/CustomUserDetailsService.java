@@ -1,6 +1,6 @@
 package com.projecth.projecthbackend.security;
 
-import com.projecth.projecthbackend.user.UserService;
+import com.projecth.projecthbackend.account.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,11 +14,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserService userService;
+    private final AccountService accountService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        var authenticatedUser = userService.getByEmail(email);
+        var authenticatedUser = accountService.getByEmail(email);
 
         return new User(
                 authenticatedUser.email(),
