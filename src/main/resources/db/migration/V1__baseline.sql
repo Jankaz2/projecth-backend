@@ -14,9 +14,7 @@ create table POLITICIAN_ENTITY
     SURNAME            varchar(255),
     BIO                varchar(255),
     POLITICAL_PARTY    varchar(255),
-    PROFILE_PHOTO_PATH varchar(255),
-    EVENT_ID           BIGINT,
-    FOREIGN KEY (EVENT_ID) REFERENCES EVENT_ENTITY (ID)
+    PROFILE_PHOTO_PATH varchar(255)
 );
 
 create table POST_ENTITY
@@ -38,7 +36,7 @@ create table EVENT_ENTITY
 (
     ID                   BIGINT not null primary key,
     NAME                 varchar(255),
-    OCCURENCE_DATE       date,
+    OCCURRENCE_DATE      TIMESTAMP,
     POLITICIAN_ENTITY_ID BIGINT,
     FOREIGN KEY (POLITICIAN_ENTITY_ID) REFERENCES POLITICIAN_ENTITY (ID)
 );

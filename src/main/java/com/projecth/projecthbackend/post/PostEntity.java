@@ -12,16 +12,19 @@ import lombok.*;
 @Entity
 public class PostEntity {
 
-    @Id @GeneratedValue private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private PoliticianEntity politicianEntityId;
+    private PoliticianEntity politicianEntity;
 
     private Long tagId;
 
     @Enumerated(EnumType.STRING)
     private PostType type;
     private String content;
+    @Enumerated(EnumType.STRING)
     private Attitude attitude;
     private String videoPath;
     private int positive;
