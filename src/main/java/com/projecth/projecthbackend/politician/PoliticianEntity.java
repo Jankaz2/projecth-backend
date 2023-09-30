@@ -1,11 +1,15 @@
 package com.projecth.projecthbackend.politician;
 
+import com.projecth.projecthbackend.event.EventEntity;
 import jakarta.persistence.*;
+import lombok.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,11 +20,12 @@ import lombok.Setter;
 public class PoliticianEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String name;
     private String surname;
     private String bio;
+
     @Enumerated(EnumType.STRING)
     private PoliticalParty politicalParty;
     private String profilePhotoPath;

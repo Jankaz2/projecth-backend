@@ -1,5 +1,10 @@
 package com.projecth.projecthbackend.politician;
 
+import java.util.List;
+
+import com.projecth.projecthbackend.event.Event;
+
+
 public record Politician(
         Long id,
         String name,
