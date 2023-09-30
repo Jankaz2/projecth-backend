@@ -19,13 +19,9 @@ public class PostEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private PoliticianEntity politicianEntity;
 
-    private Long tagId;
-
     @Enumerated(EnumType.STRING)
     private PostType type;
     private String content;
-    @Enumerated(EnumType.STRING)
-    private Attitude attitude;
     private String videoPath;
     private int positive;
     private int negative;

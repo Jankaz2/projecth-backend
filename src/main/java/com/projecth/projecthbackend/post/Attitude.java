@@ -1,7 +1,7 @@
 package com.projecth.projecthbackend.post;
 
 public enum Attitude {
-    GOOD,
+    POSITIVE,
     NEUTRAL,
-    BAD
+    NEGATIVE
 }

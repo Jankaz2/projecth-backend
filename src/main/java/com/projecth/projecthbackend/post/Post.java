@@ -8,7 +8,6 @@ public record Post(
         Long tagId,
         PostType postType,
         String content,
-        Attitude attitude,
         String videoPath,
         int positive,
         int negative,
@@ -18,10 +17,8 @@ public record Post(
         return new PostEntity(
                 this.id,
                 this.politician().toPoliticianEntity(),
-                this.tagId,
                 this.postType,
                 this.content,
-                this.attitude,
                 this.videoPath,
                 this.positive,
                 this.negative,
