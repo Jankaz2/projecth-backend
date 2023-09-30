@@ -1,17 +1,17 @@
 package com.projecth.projecthbackend.post;
 
 import com.projecth.projecthbackend.politician.Politician;
+import com.projecth.projecthbackend.post.likes.PostLikes;
 
 public record Post(
         Long id,
         Politician politician,
-        Long tagId,
         PostType postType,
         String content,
         String videoPath,
-        int positive,
-        int negative,
-        int neutral
+        int positiveVotes,
+        int negativeVotes,
+        int neutralVotes
 ) {
     public PostEntity toPostEntity() {
         return new PostEntity(
@@ -20,9 +20,9 @@ public record Post(
                 this.postType,
                 this.content,
                 this.videoPath,
-                this.positive,
-                this.negative,
-                this.neutral
+                this.positiveVotes,
+                this.negativeVotes,
+                this.neutralVotes
         );
     }
 }

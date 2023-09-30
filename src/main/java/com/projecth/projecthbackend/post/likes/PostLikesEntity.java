@@ -1,5 +1,6 @@
-package com.projecth.projecthbackend.post;
+package com.projecth.projecthbackend.post.likes;
 
+import com.projecth.projecthbackend.post.Attitude;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-public class PostLikes {
+public class PostLikesEntity {
 
     @Id
     @GeneratedValue
@@ -23,5 +24,9 @@ public class PostLikes {
     @Enumerated(EnumType.STRING)
     private Attitude attitude;
     private LocalDateTime likedAt;
+
+    public PostLikes toDto() {
+        return new PostLikes(this.id, this.postId, this.userId, this.attitude, this.likedAt);
+    }
 
 }

@@ -15,7 +15,6 @@ public class PostEntity {
     @Id
     @GeneratedValue
     private Long id;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private PoliticianEntity politicianEntity;
 
@@ -23,7 +22,11 @@ public class PostEntity {
     private PostType type;
     private String content;
     private String videoPath;
-    private int positive;
-    private int negative;
-    private int neutral;
+    private int positiveVotes;
+    private int negativeVotes;
+    private int neutralVotes;
+
+    public Post toDto() {
+        return new Post(this.id, this.politicianEntity.toDto(), this.type, this.content, this.videoPath, this.positiveVotes, this.negativeVotes, this.neutralVotes);
+    }
 }
