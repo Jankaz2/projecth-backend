@@ -2,10 +2,7 @@ package com.projecth.projecthbackend.post;
 
 import com.projecth.projecthbackend.post.response.PostResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,15 @@ public class PostController {
     public List<PostResponse> getAllPosts(@PathVariable("politicianId") Long politicianId, @PathVariable("userId") Long userId) {
         List<PostResponse> allPosts = postService.getAllPosts(politicianId, userId);
         return allPosts;
+    }
+
+    @PostMapping("/{postId}/{userId}/{attitude}")
+    public PostResponse rateThePost(
+            @PathVariable Long postId,
+            @PathVariable Long userId,
+            @PathVariable Attitude attitude
+    ) {
+        return postService.rateThePost(postId, userId, attitude);
     }
 
 }
