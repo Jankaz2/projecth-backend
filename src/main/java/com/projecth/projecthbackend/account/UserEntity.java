@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-public class AccountEntity {
+public class UserEntity {
     @Id
     @GeneratedValue
     private Long id;
@@ -17,7 +17,7 @@ public class AccountEntity {
     private String email;
     private String password;
 
-    public Account toDto() {
-        return new Account(this.id, this.email, this.password);
+    public User toDto() {
+        return new User(this.id, this.email, this.password);
     }
 }

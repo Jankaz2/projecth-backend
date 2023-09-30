@@ -1,6 +1,5 @@
 package com.projecth.projecthbackend.post;
 
-import com.projecth.projecthbackend.account.Account;
 import com.projecth.projecthbackend.post.response.PostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

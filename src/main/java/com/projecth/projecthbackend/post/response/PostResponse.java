@@ -1,14 +1,16 @@
 package com.projecth.projecthbackend.post.response;
 
-import com.projecth.projecthbackend.post.likes.PostLikes;
+import com.projecth.projecthbackend.post.Attitude;
 import com.projecth.projecthbackend.post.PostType;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
+@Getter
 public class PostResponse {
 
     private Long postId;
-    private PostLikes postLikesEntity;
+    private Attitude attitude;
     private PostType postType;
     private String content;
     private String positiveVotes;

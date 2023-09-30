@@ -25,23 +25,25 @@ public class PostService {
     public List<PostResponse> getAllPosts(Long politicianId, Long userId) {
         List<Post> postsList = postRepository.findAllByPoliticianEntityId(politicianId).stream().map(PostEntity::toDto).toList();
         List<PostResponse> response = postsList.stream().map(post -> {
-            PostLikesEntity postLikesEntity = postLikesRepository.findByPostIdAndUserId(post.id(), userId).orElse(null);
-            PostLikes postLikesDto = null;
-            if(postLikesEntity != null) {
-                postLikesDto = postLikesEntity.toDto();
+            Attitude attitude = null;
+            Optional<PostLikesEntity> postLikesEntity = postLikesRepository.findByPostIdAndUserId(post.id(), userId);
+
+            if (postLikesEntity.isPresent()) {
+                attitude = postLikesEntity.get().getAttitude();
             }
 
             Tag tag = tagRepository.findById(post.id()).orElseThrow(() -> new RuntimeException("Tag not found.")).toDto();
             int total = post.positiveVotes() + post.neutralVotes() + post.negativeVotes();
 
-            String positiveVotesPercentage = FORMATTER.format(((double) post.positiveVotes() / total) * 100);
-            String neutralVotesPercentage = FORMATTER.format(((double) post.neutralVotes() / total) * 100);
-            String negativeVotesPercentage = FORMATTER.format(((double) post.negativeVotes() / total) * 100);
-
-            return new PostResponse(post.id(), postLikesDto, post.postType(), post.content(),
-                    positiveVotesPercentage, negativeVotesPercentage, neutralVotesPercentage, tag.name(), post.videoPath());
+            return new PostResponse(post.id(), attitude, post.postType(), post.content(),
+                    calculatePercentage(post.positiveVotes(), total), calculatePercentage(post.negativeVotes(), total), calculatePercentage(post.neutralVotes(), total),
+                    tag.name(), post.videoPath());
         }).toList();
 
         return response;
+    }
+
+    private String calculatePercentage(int value, int total) {
+       return FORMATTER.format(((double) value / total) * 100);
     }
 }

@@ -7,12 +7,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AccountService {
+public class UserService {
 
-    private final AccountRepository userRepository;
+    private final UserRepository userRepository;
 
     @Transactional
-    public Account getByEmail(String email) {
+    public User getByEmail(String email) {
         var foundUser = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Not found user with this email: " + email));
 
@@ -20,14 +20,14 @@ public class AccountService {
     }
 
     @Transactional
-    public Account signUp(Account account) {
-        var userEntity = account.toUserEntity();
-        userEntity.setPassword(account.password());
+    public User signUp(User user) {
+        var userEntity = user.toUserEntity();
+        userEntity.setPassword(user.password());
         return userRepository.save(userEntity).toDto();
     }
 
     @Transactional
-    public List<Account> getUsers() {
-        return userRepository.findAll().stream().map(AccountEntity::toDto).toList();
+    public List<User> getUsers() {
+        return userRepository.findAll().stream().map(UserEntity::toDto).toList();
     }
 }

@@ -8,18 +8,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/accounts")
 @RequiredArgsConstructor
-public class AccountController {
+public class UserController {
 
-    private final AccountService accountService;
+    private final UserService userService;
 
     @PostMapping("/sign-up")
-    public Account signUp(@RequestBody Account account) {
-        return accountService.signUp(account);
+    public User signUp(@RequestBody User user) {
+        return userService.signUp(user);
     }
 
     @GetMapping
-    public List<Account> getUsers() {
-        return accountService.getUsers();
+    public List<User> getUsers() {
+        return userService.getUsers();
     }
 
 }

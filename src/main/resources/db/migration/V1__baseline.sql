@@ -1,6 +1,6 @@
 create sequence HIBERNATE_SEQUENCE;
 
-create table ACCOUNT_ENTITY
+create table USER_ENTITY
 (
     ID       BIGINT not null primary key,
     EMAIL    varchar(255),
