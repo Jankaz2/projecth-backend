@@ -37,10 +37,9 @@ public class PostService {
             }
 
             Tag tag = tagRepository.findById(post.id()).orElseThrow(() -> new RuntimeException("Tag not found.")).toDto();
-            int total = post.positiveVotes() + post.neutralVotes() + post.negativeVotes();
-
+            PostVotesPercentage postVotesPercentage = countPostVotesPercentage(post);
             return new PostResponse(post.id(), attitude, post.content(),
-                    calculatePercentage(post.positiveVotes(), total), calculatePercentage(post.negativeVotes(), total), calculatePercentage(post.neutralVotes(), total),
+                    postVotesPercentage.positive(), postVotesPercentage.negative(), postVotesPercentage.neutral(),
                     tag.name(), post.videoPath());
         }).toList();
 
