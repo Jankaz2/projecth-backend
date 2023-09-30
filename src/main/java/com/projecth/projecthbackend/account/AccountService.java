@@ -2,9 +2,7 @@ package com.projecth.projecthbackend.account;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -12,7 +10,6 @@ import java.util.List;
 public class AccountService {
 
     private final AccountRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public Account getByEmail(String email) {
@@ -25,7 +22,7 @@ public class AccountService {
     @Transactional
     public Account signUp(Account account) {
         var userEntity = account.toUserEntity();
-        userEntity.setPassword(passwordEncoder.encode(account.password()));
+        userEntity.setPassword(account.password());
         return userRepository.save(userEntity).toDto();
     }
 

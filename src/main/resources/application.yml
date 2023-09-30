@@ -7,10 +7,24 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
   sql:
     init:
       mode: always
   flyway:
     baseline-on-migrate: true
 
+
+cloud:
+  aws:
+    region:
+      static: eu-central-1
+    stack:
+      auto: false
+    credentials:
+      access-key: AKIA3SQGY6M3BWHPSHKC
+      secret-key: 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
+
+s3:
+  bucket:
+    name: projecthackathon

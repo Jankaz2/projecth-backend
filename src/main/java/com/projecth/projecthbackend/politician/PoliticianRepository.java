@@ -7,7 +7,4 @@ import java.util.Optional;
 
 @Repository
 public interface PoliticianRepository extends JpaRepository<PoliticianEntity, Long> {
-
-    Optional<PoliticianEntity> findByPoliticalParty(String politicianParty);
-
 }

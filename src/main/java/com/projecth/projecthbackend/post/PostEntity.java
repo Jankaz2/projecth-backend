@@ -1,13 +1,8 @@
 package com.projecth.projecthbackend.post;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.projecth.projecthbackend.politician.PoliticianEntity;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
@@ -17,15 +12,19 @@ import lombok.Setter;
 @Entity
 public class PostEntity {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-    private Long postId;
+    @Id @GeneratedValue private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private PoliticianEntity politicianEntityId;
+
+    private Long tagId;
+
+    @Enumerated(EnumType.STRING)
+    private PostType type;
     private String content;
     private Attitude attitude;
-
-    public Post toDto() {
-        return new Post(this.id, this.postId, this.content, this.attitude);
-    }
-
+    private String videoPath;
+    private int positive;
+    private int negative;
+    private int neutral;
 }
