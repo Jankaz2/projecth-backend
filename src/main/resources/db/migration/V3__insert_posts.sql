@@ -1,4 +1,4 @@
-INSERT INTO POST_ENTITY (ID, POLITICIAN_ENTITY_ID, TYPE, CONTENT, VIDEO_PATH, POSITIVE, NEGATIVE, NEUTRAL)
+INSERT INTO POST_ENTITY (ID, POLITICIAN_ENTITY_ID, TYPE, CONTENT, VIDEO_PATH, POSITIVE_VOTES, NEGATIVE_VOTES, NEUTRAL_VOTES)
 VALUES (1, 1, 'TEXT',
         'In today''s fast-paced and interconnected world, civic engagement has become more crucial than ever in shaping the course of politics. It''s no longer enough to simply cast your vote during elections.',
         null, 521, 121, 234),
@@ -12,7 +12,7 @@ VALUES (1, 1, 'TEXT',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis laoreet diam. Curabitur vulputate cursus felis id auctor. Cras ultrices, arcu id aliquam viverra, eros mi bibendum felis, ut porta risus velit eu nisl. Ut ut malesuada sem.',
         null, 4888, 184, 464);
 
-INSERT INTO POST_ENTITY (ID, POLITICIAN_ENTITY_ID, TYPE, CONTENT, VIDEO_PATH, POSITIVE, NEGATIVE, NEUTRAL)
+INSERT INTO POST_ENTITY (ID, POLITICIAN_ENTITY_ID, TYPE, CONTENT, VIDEO_PATH, POSITIVE_VOTES, NEGATIVE_VOTES, NEUTRAL_VOTES)
 VALUES (5, 2, 'TEXT',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis laoreet diam. Curabitur vulputate cursus felis id auctor. Cras ultrices, arcu id aliquam viverra, eros mi bibendum felis, ut porta risus velit eu nisl. Ut ut malesuada sem.5',
         null, 646, 67, 346),
@@ -26,7 +26,7 @@ VALUES (5, 2, 'TEXT',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis laoreet diam. Curabitur vulputate cursus felis id auctor. Cras ultrices, arcu id aliquam viverra, eros mi bibendum felis, ut porta risus velit eu nisl. Ut ut malesuada sem.8',
         null, 565, 681, 362);
 
-INSERT INTO POST_ENTITY (ID, POLITICIAN_ENTITY_ID, TYPE, CONTENT, VIDEO_PATH, POSITIVE, NEGATIVE, NEUTRAL)
+INSERT INTO POST_ENTITY (ID, POLITICIAN_ENTITY_ID, TYPE, CONTENT, VIDEO_PATH, POSITIVE_VOTES, NEGATIVE_VOTES, NEUTRAL_VOTES)
 VALUES (9, 3, 'TEXT',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis laoreet diam. Curabitur vulputate cursus felis id auctor. Cras ultrices, arcu id aliquam viverra, eros mi bibendum felis, ut porta risus velit eu nisl. Ut ut malesuada sem.9',
         null, 75, 566, 153),
@@ -40,7 +40,7 @@ VALUES (9, 3, 'TEXT',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis laoreet diam. Curabitur vulputate cursus felis id auctor. Cras ultrices, arcu id aliquam viverra, eros mi bibendum felis, ut porta risus velit eu nisl. Ut ut malesuada sem.12',
         null, 655, 1424, 255);
 
-INSERT INTO POST_ENTITY (ID, POLITICIAN_ENTITY_ID, TYPE, CONTENT, VIDEO_PATH, POSITIVE, NEGATIVE, NEUTRAL)
+INSERT INTO POST_ENTITY (ID, POLITICIAN_ENTITY_ID, TYPE, CONTENT, VIDEO_PATH, POSITIVE_VOTES, NEGATIVE_VOTES, NEUTRAL_VOTES)
 VALUES (13, 4, 'TEXT',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis laoreet diam. Curabitur vulputate cursus felis id auctor. Cras ultrices, arcu id aliquam viverra, eros mi bibendum felis, ut porta risus velit eu nisl. Ut ut malesuada sem.13',
         null, 822, 50, 30),

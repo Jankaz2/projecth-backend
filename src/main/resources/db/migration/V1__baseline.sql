@@ -25,9 +25,9 @@ create table POST_ENTITY
     CONTENT              varchar(255),
     ATTITUDE             varchar(255),
     VIDEO_PATH           varchar(255),
-    POSITIVE             integer,
-    NEGATIVE             integer,
-    NEUTRAL              integer,
+    POSITIVE_VOTES             integer,
+    NEGATIVE_VOTES             integer,
+    NEUTRAL_VOTES              integer,
     FOREIGN KEY (POLITICIAN_ENTITY_ID) REFERENCES POLITICIAN_ENTITY (ID)
 );
 
@@ -47,7 +47,7 @@ create table TAG_ENTITY
 );
 
 
-create table POST_LIKES
+create table POST_LIKES_ENTITY
 (
     ID       BIGINT not null primary key,
     POST_ID  BIGINT not null,
