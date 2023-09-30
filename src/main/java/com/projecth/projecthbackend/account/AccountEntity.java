@@ -1,4 +1,4 @@
-package com.projecth.projecthbackend.user;
+package com.projecth.projecthbackend.account;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,13 +9,13 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-public class UserEntity {
+public class AccountEntity {
     @Id @GeneratedValue private Long id;
 
     private String email;
     private String password;
 
-    public User toDto() {
-        return new User(this.id, this.email, this.password);
+    public Account toDto() {
+        return new Account(this.id, this.email, this.password);
     }
 }

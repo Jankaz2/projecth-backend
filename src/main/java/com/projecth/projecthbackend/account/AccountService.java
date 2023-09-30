@@ -1,4 +1,4 @@
-package com.projecth.projecthbackend.user;
+package com.projecth.projecthbackend.account;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -9,13 +9,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class AccountService {
 
-    private final UserRepository userRepository;
+    private final AccountRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public User getByEmail(String email) {
+    public Account getByEmail(String email) {
         var foundUser = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Not found user with this email: " + email));
 
@@ -23,14 +23,14 @@ public class UserService {
     }
 
     @Transactional
-    public User signUp(User user) {
-        var userEntity = user.toUserEntity();
-        userEntity.setPassword(passwordEncoder.encode(user.password()));
+    public Account signUp(Account account) {
+        var userEntity = account.toUserEntity();
+        userEntity.setPassword(passwordEncoder.encode(account.password()));
         return userRepository.save(userEntity).toDto();
     }
 
     @Transactional
-    public List<User> getUsers() {
-        return userRepository.findAll().stream().map(UserEntity::toDto).toList();
+    public List<Account> getUsers() {
+        return userRepository.findAll().stream().map(AccountEntity::toDto).toList();
     }
 }
