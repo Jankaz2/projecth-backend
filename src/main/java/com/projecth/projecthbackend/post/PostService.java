@@ -15,6 +15,7 @@ import java.util.List;
 import jakarta.transaction.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +39,7 @@ public class PostService {
             Tag tag = tagRepository.findById(post.id()).orElseThrow(() -> new RuntimeException("Tag not found.")).toDto();
             int total = post.positiveVotes() + post.neutralVotes() + post.negativeVotes();
 
-            return new PostResponse(post.id(), attitude, post.postType(), post.content(),
+            return new PostResponse(post.id(), attitude, post.content(),
                     calculatePercentage(post.positiveVotes(), total), calculatePercentage(post.negativeVotes(), total), calculatePercentage(post.neutralVotes(), total),
                     tag.name(), post.videoPath());
         }).toList();
@@ -62,7 +63,7 @@ public class PostService {
         var updatedPostEntity = postRepository.save(increaseVotes(postEntity, attitude));
         var votesPercentage = countPostVotesPercentage(updatedPostEntity.toDto());
         return new PostResponse(
-                postEntity.getId(), postLikes.toDto(), postEntity.getType(),
+                postEntity.getId(), postLikes.getAttitude(),
                 postEntity.getContent(), votesPercentage.positive(), votesPercentage.negative(), votesPercentage.neutral(),
                 tag.get().getName(), postEntity.getVideoPath()
         );
@@ -80,7 +81,7 @@ public class PostService {
         postLikesRepository.save(postLikes);
 
         var votesPercentage = countPostVotesPercentage(postEntity.toDto());
-        return new PostResponse(postEntity.getId(), postLikes.toDto(), postEntity.getType(),
+        return new PostResponse(postEntity.getId(), postLikes.getAttitude(),
                 postEntity.getContent(), votesPercentage.positive(), votesPercentage.negative(), votesPercentage.neutral(),
                 tag.get().getName(), postEntity.getVideoPath()
         );
