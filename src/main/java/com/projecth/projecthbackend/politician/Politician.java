@@ -1,6 +1,7 @@
 package com.projecth.projecthbackend.politician;
 
 import java.util.List;
+
 import com.projecth.projecthbackend.event.Event;
 
 
@@ -9,9 +10,8 @@ public record Politician(
         String name,
         String surname,
         String bio,
-        PoliticianParty politicianParty,
-        String profilePhotoPath,
-        List<Event> events
+        PoliticalParty politicalParty,
+        String profilePhotoPath
 ) {
     public PoliticianEntity toPoliticianEntity() {
         return new PoliticianEntity(
@@ -19,9 +19,8 @@ public record Politician(
                 this.name,
                 this.surname,
                 this.bio,
-                this.politicianParty,
-                this.profilePhotoPath,
-                this.events.stream().map(Event::toEventEntity).toList()
+                this.politicalParty,
+                this.profilePhotoPath
         );
     }
 }

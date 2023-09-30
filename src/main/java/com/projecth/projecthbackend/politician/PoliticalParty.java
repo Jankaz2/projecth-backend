@@ -1,13 +1,13 @@
 package com.projecth.projecthbackend.politician;
 
-public enum PoliticianParty {
+public enum PoliticalParty {
     KONFEDERACJA("Konfederacja"),
     KOALICJA_OBYWATELSKA("Koalicja Obywatelska"),
     PIS("PIS");
 
     private String value;
 
-    PoliticianParty(String value) {
+    PoliticalParty(String value) {
         this.value = value;
     }
 }

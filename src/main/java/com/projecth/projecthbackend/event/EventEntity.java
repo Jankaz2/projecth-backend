@@ -1,10 +1,7 @@
 package com.projecth.projecthbackend.event;
 
 import com.projecth.projecthbackend.politician.PoliticianEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -26,7 +23,7 @@ public class EventEntity {
     private Long id;
     private String name;
     private OffsetDateTime occurrenceDate;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private PoliticianEntity politicianEntity;
 
     public Event toDto() {

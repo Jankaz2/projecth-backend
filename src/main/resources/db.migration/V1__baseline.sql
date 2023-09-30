@@ -13,8 +13,10 @@ create table POLITICIAN_ENTITY
     NAME               varchar(255),
     SURNAME            varchar(255),
     BIO                varchar(255),
-    POLITICIAN_PARTY   varchar(255),
+    POLITICAL_PARTY    varchar(255),
     PROFILE_PHOTO_PATH varchar(255),
+    EVENT_ID           BIGINT,
+    FOREIGN KEY (EVENT_ID) REFERENCES EVENT_ENTITY (ID)
 );
 
 create table POST_ENTITY
@@ -29,5 +31,14 @@ create table POST_ENTITY
     POSITIVE             integer,
     NEGATIVE             integer,
     NEUTRAL              integer,
+    FOREIGN KEY (POLITICIAN_ENTITY_ID) REFERENCES POLITICIAN_ENTITY (ID)
+);
+
+create table EVENT_ENTITY
+(
+    ID                   BIGINT not null primary key,
+    NAME                 varchar(255),
+    OCCURENCE_DATE       date,
+    POLITICIAN_ENTITY_ID BIGINT,
     FOREIGN KEY (POLITICIAN_ENTITY_ID) REFERENCES POLITICIAN_ENTITY (ID)
 );
