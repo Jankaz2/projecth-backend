@@ -13,14 +13,11 @@ import lombok.*;
 public class PostEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private PoliticianEntity politicianEntity;
-
     private Long tagId;
-
     @Enumerated(EnumType.STRING)
     private PostType type;
     private String content;

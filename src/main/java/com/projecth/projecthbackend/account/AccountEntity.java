@@ -11,7 +11,7 @@ import lombok.*;
 @Entity
 public class AccountEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String email;

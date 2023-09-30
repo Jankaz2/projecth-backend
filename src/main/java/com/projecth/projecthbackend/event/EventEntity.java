@@ -19,7 +19,7 @@ import java.time.OffsetDateTime;
 public class EventEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private OffsetDateTime occurrenceDate;
