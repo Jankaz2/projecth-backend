@@ -1,6 +1,7 @@
 package com.projecth.projecthbackend.politician;
 
 import com.projecth.projecthbackend.politician.believes.CorePoliticalBelieves;
+import com.projecth.projecthbackend.politician.response.PoliticianProfileResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class PoliticianController {
     }
 
     @GetMapping("/{id}")
-    public Politician getOne(@PathVariable Long id) {
+    public PoliticianProfileResponse getOne(@PathVariable Long id) {
         return politicianService.getPolitician(id);
     }
 

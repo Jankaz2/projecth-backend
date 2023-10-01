@@ -2,8 +2,12 @@ package com.projecth.projecthbackend.politician;
 
 import com.projecth.projecthbackend.common.PhotoService;
 import com.projecth.projecthbackend.common.S3Path;
+import com.projecth.projecthbackend.event.Event;
+import com.projecth.projecthbackend.event.EventEntity;
+import com.projecth.projecthbackend.event.EventRepository;
 import com.projecth.projecthbackend.politician.believes.CorePoliticalBelieves;
 import com.projecth.projecthbackend.politician.believes.CorePoliticalBelievesRepository;
+import com.projecth.projecthbackend.politician.response.PoliticianProfileResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +21,7 @@ public class PoliticianService {
 
     private final PhotoService photoService;
     private final PoliticianRepository politicianRepository;
-    private final CorePoliticalBelievesRepository corePoliticalBelievesRepository;
+    private final EventRepository eventRepository;
 
     @Transactional
     public Politician save(CreatePoliticianDto politician, MultipartFile profilePhoto) {
@@ -29,10 +33,13 @@ public class PoliticianService {
     }
 
     @Transactional
-    public Politician getPolitician(Long id) {
-        return politicianRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Politician with this id [" + id + "] has not been found"))
+    public PoliticianProfileResponse getPolitician(Long politicianId) {
+        String eventName = eventRepository.findByPoliticianEntityId(politicianId).toDto().name();
+        Politician politician = politicianRepository.findById(politicianId)
+                .orElseThrow(() -> new RuntimeException("Politician with this id [" + politicianId + "] has not been found"))
                 .toDto();
+        return new PoliticianProfileResponse(politician.id(), politician.name(), politician.surname(), politician.bio(), politician.politicalParty(),
+                politician.profilePhotoPath(), politician.backgroundPhotoPath(), politician.corePoliticalBelieves(), eventName);
     }
 
     @Transactional
