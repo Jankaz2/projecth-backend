@@ -66,3 +66,10 @@ create table POST_LIKES_ENTITY
     ATTITUDE varchar(255),
     LIKED_AT timestamp
 );
+
+create table FOLLOW_ENTITY
+(
+    ID            BIGINT not null primary key,
+    POLITICIAN_ID BIGINT not null,
+    USER_ID       BIGINT not null
+);
