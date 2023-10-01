@@ -7,14 +7,25 @@ create table USER_ENTITY
     PASSWORD varchar(255)
 );
 
+create table CORE_POLITICAL_BELIEVES_ENTITY
+(
+    ID                BIGINT  not null primary key,
+    ECONOMIC_MARKER   integer not null,
+    DIPLOMATIC_MARKER integer not null,
+    CIVIL_MARKER      integer not null,
+    SOCIETAL_MARKER   integer not null
+);
+
 create table POLITICIAN_ENTITY
 (
-    ID                 BIGINT not null primary key,
-    NAME               varchar(255),
-    SURNAME            varchar(255),
-    BIO                varchar(255),
-    POLITICAL_PARTY    varchar(255),
-    PROFILE_PHOTO_PATH varchar(255)
+    ID                      BIGINT not null primary key,
+    CORE_BELIEVES_ENTITY_ID BIGINT,
+    NAME                    varchar(255),
+    SURNAME                 varchar(255),
+    BIO                     varchar(255),
+    POLITICAL_PARTY         varchar(255),
+    PROFILE_PHOTO_PATH      varchar(255),
+    FOREIGN KEY (CORE_BELIEVES_ENTITY_ID) REFERENCES CORE_POLITICAL_BELIEVES_ENTITY (ID)
 );
 
 create table POST_ENTITY
@@ -25,9 +36,9 @@ create table POST_ENTITY
     CONTENT              varchar(255),
     ATTITUDE             varchar(255),
     VIDEO_PATH           varchar(255),
-    POSITIVE_VOTES             integer,
-    NEGATIVE_VOTES             integer,
-    NEUTRAL_VOTES              integer,
+    POSITIVE_VOTES       integer,
+    NEGATIVE_VOTES       integer,
+    NEUTRAL_VOTES        integer,
     FOREIGN KEY (POLITICIAN_ENTITY_ID) REFERENCES POLITICIAN_ENTITY (ID)
 );
 

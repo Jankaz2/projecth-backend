@@ -2,6 +2,8 @@ package com.projecth.projecthbackend.politician;
 
 import com.projecth.projecthbackend.common.PhotoService;
 import com.projecth.projecthbackend.common.S3Path;
+import com.projecth.projecthbackend.politician.believes.CorePoliticalBelieves;
+import com.projecth.projecthbackend.politician.believes.CorePoliticalBelievesRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ public class PoliticianService {
 
     private final PhotoService photoService;
     private final PoliticianRepository politicianRepository;
+    private final CorePoliticalBelievesRepository corePoliticalBelievesRepository;
 
     @Transactional
     public Politician save(CreatePoliticianDto politician, MultipartFile profilePhoto) {

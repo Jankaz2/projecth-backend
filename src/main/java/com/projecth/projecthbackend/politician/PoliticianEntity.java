@@ -1,6 +1,8 @@
 package com.projecth.projecthbackend.politician;
 
 import com.projecth.projecthbackend.event.EventEntity;
+import com.projecth.projecthbackend.politician.believes.CorePoliticalBelieves;
+import com.projecth.projecthbackend.politician.believes.CorePoliticalBelievesEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.AllArgsConstructor;
@@ -29,8 +31,11 @@ public class PoliticianEntity {
     @Enumerated(EnumType.STRING)
     private PoliticalParty politicalParty;
     private String profilePhotoPath;
+    @OneToOne
+    @JoinColumn(name = "id")
+    private CorePoliticalBelievesEntity corePoliticalBelievesEntity;
 
     public Politician toDto() {
-        return new Politician(this.id, this.name, this.surname, this.bio, this.politicalParty, this.profilePhotoPath);
+        return new Politician(this.id, this.name, this.surname, this.bio, this.politicalParty, this.profilePhotoPath, corePoliticalBelievesEntity.toCorePoliticalBelievesDto());
     }
 }

@@ -1,5 +1,6 @@
 package com.projecth.projecthbackend.politician;
 
+import com.projecth.projecthbackend.politician.believes.CorePoliticalBelieves;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
