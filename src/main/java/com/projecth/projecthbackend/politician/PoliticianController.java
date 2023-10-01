@@ -21,9 +21,9 @@ public class PoliticianController {
         return politicianService.save(politician, file);
     }
 
-    @GetMapping("/{id}")
-    public PoliticianProfileResponse getOne(@PathVariable Long id) {
-        return politicianService.getPolitician(id);
+    @GetMapping("/{politicianId}/{userId}")
+    public PoliticianProfileResponse getOne(@PathVariable Long politicianId, @PathVariable Long userId) {
+        return politicianService.getPolitician(politicianId, userId);
     }
 
     @GetMapping

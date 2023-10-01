@@ -7,6 +7,7 @@ import com.projecth.projecthbackend.event.EventEntity;
 import com.projecth.projecthbackend.event.EventRepository;
 import com.projecth.projecthbackend.politician.believes.CorePoliticalBelieves;
 import com.projecth.projecthbackend.politician.believes.CorePoliticalBelievesRepository;
+import com.projecth.projecthbackend.politician.follow.FollowRepository;
 import com.projecth.projecthbackend.politician.response.PoliticianProfileResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class PoliticianService {
     private final PhotoService photoService;
     private final PoliticianRepository politicianRepository;
     private final EventRepository eventRepository;
+    private final FollowRepository followRepository;
 
     @Transactional
     public Politician save(CreatePoliticianDto politician, MultipartFile profilePhoto) {
@@ -33,13 +35,14 @@ public class PoliticianService {
     }
 
     @Transactional
-    public PoliticianProfileResponse getPolitician(Long politicianId) {
+    public PoliticianProfileResponse getPolitician(Long politicianId, Long userId) {
         String eventName = eventRepository.findByPoliticianEntityId(politicianId).toDto().name();
         Politician politician = politicianRepository.findById(politicianId)
                 .orElseThrow(() -> new RuntimeException("Politician with this id [" + politicianId + "] has not been found"))
                 .toDto();
+        boolean isFollowedByUser = followRepository.findByUserId(userId).stream().anyMatch(follow -> follow.getPoliticianId().equals(politicianId));
         return new PoliticianProfileResponse(politician.id(), politician.name(), politician.surname(), politician.bio(), politician.politicalParty(),
-                politician.profilePhotoPath(), politician.backgroundPhotoPath(), politician.corePoliticalBelieves(), eventName);
+                politician.profilePhotoPath(), politician.backgroundPhotoPath(), politician.corePoliticalBelieves(), eventName, isFollowedByUser);
     }
 
     @Transactional

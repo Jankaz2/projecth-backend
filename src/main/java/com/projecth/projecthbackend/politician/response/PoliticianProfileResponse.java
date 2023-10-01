@@ -18,5 +18,6 @@ public class PoliticianProfileResponse {
     private String backgroundPhotoPath;
     private CorePoliticalBelieves corePoliticalBelievesEntity;
     private String eventName;
+    private boolean isFollowedByUser;
 
 }

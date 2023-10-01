@@ -4,7 +4,6 @@ import com.projecth.projecthbackend.politician.Politician;
 import com.projecth.projecthbackend.politician.PoliticianEntity;
 import com.projecth.projecthbackend.politician.PoliticianRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
