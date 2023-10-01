@@ -1,6 +1,5 @@
 package com.projecth.projecthbackend.post;
 
-import com.projecth.projecthbackend.post.likes.PostLikes;
 import com.projecth.projecthbackend.post.likes.PostLikesEntity;
 import com.projecth.projecthbackend.post.likes.PostLikesRepository;
 import com.projecth.projecthbackend.post.response.PostResponse;
@@ -95,9 +94,9 @@ public class PostService {
     }
     private PostEntity decreaseVotes(PostEntity postEntity, Attitude attitude) {
         switch (attitude) {
-            case POSITIVE -> postEntity.setPositiveVotes(postEntity.getPositiveVotes() - 1);
-            case NEGATIVE -> postEntity.setNegativeVotes(postEntity.getNegativeVotes() - 1);
-            case NEUTRAL -> postEntity.setNeutralVotes(postEntity.getNeutralVotes() - 1);
+            case positive -> postEntity.setPositiveVotes(postEntity.getPositiveVotes() - 1);
+            case negative -> postEntity.setNegativeVotes(postEntity.getNegativeVotes() - 1);
+            case neutral -> postEntity.setNeutralVotes(postEntity.getNeutralVotes() - 1);
         }
 
         return postEntity;
@@ -105,9 +104,9 @@ public class PostService {
 
     private PostEntity increaseVotes(PostEntity postEntity, Attitude attitude) {
         switch (attitude) {
-            case POSITIVE -> postEntity.setPositiveVotes(postEntity.getPositiveVotes() + 1);
-            case NEGATIVE -> postEntity.setNegativeVotes(postEntity.getNegativeVotes() + 1);
-            case NEUTRAL -> postEntity.setNegativeVotes(postEntity.getNeutralVotes() + 1);
+            case positive -> postEntity.setPositiveVotes(postEntity.getPositiveVotes() + 1);
+            case negative -> postEntity.setNegativeVotes(postEntity.getNegativeVotes() + 1);
+            case neutral -> postEntity.setNegativeVotes(postEntity.getNeutralVotes() + 1);
         }
 
         return postEntity;

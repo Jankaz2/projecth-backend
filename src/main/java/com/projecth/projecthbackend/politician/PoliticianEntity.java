@@ -35,7 +35,9 @@ public class PoliticianEntity {
     @JoinColumn(name = "id")
     private CorePoliticalBelievesEntity corePoliticalBelievesEntity;
 
+    private String backgroundPhotoPath;
+
     public Politician toDto() {
-        return new Politician(this.id, this.name, this.surname, this.bio, this.politicalParty, this.profilePhotoPath, corePoliticalBelievesEntity.toCorePoliticalBelievesDto());
+        return new Politician(this.id, this.name, this.surname, this.bio, this.politicalParty, this.profilePhotoPath, corePoliticalBelievesEntity.toCorePoliticalBelievesDto(), this.backgroundPhotoPath);
     }
 }

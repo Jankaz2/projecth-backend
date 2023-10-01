@@ -9,7 +9,8 @@ public record Politician(
         String bio,
         PoliticalParty politicalParty,
         String profilePhotoPath,
-        CorePoliticalBelieves corePoliticalBelieves
+        CorePoliticalBelieves corePoliticalBelieves,
+        String backgroundPhotoPath
 ) {
     public PoliticianEntity toPoliticianEntity() {
         return new PoliticianEntity(
@@ -19,7 +20,8 @@ public record Politician(
                 this.bio,
                 this.politicalParty,
                 this.profilePhotoPath,
-                this.corePoliticalBelieves.toCorePoliticalBelievesEntity()
+                this.corePoliticalBelieves.toCorePoliticalBelievesEntity(),
+                this.backgroundPhotoPath
         );
     }
 }

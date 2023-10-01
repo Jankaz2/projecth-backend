@@ -2,7 +2,8 @@ package com.projecth.projecthbackend.common;
 
 public enum S3Path {
     VIDEO("/videos"),
-    PROFILE("/profiles");
+    PROFILE("/profiles"),
+    BACKGROUND("/background");
 
     private String path;
 
