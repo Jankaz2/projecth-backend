@@ -3,6 +3,7 @@ package com.projecth.projecthbackend.politician.follow;
 import com.projecth.projecthbackend.politician.Politician;
 import com.projecth.projecthbackend.politician.PoliticianEntity;
 import com.projecth.projecthbackend.politician.PoliticianRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +31,8 @@ public class FollowService {
 
     }
 
+    @Transactional
+    public void followByUser(Long politicianId, Long userId) {
+        followRepository.save(new FollowEntity(null, userId, politicianId));
+    }
 }
