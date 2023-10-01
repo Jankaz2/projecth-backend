@@ -28,4 +28,5 @@ public class PostController {
         return postService.rateThePost(postId, userId, attitude);
     }
 
+
 }
